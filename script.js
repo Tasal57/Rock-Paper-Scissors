@@ -1,7 +1,7 @@
 console.log("hello world")
 
 function getComputerChoice(a, b, c) {
-    const ramdomNum = Math.random();
+    const randomNum = Math.random();
     
     
     if (randomNum < 0.33) {
@@ -23,15 +23,48 @@ function getHumanChoice() {
     return choice
 }
 
-let humanScore = 0;
-let computerScore = 0;
+
 
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
         console.log("tie")
     }
-    else if (humanchoice === "rock" && computerChoice === "scissors")
+    else if (
+        (humanChoice === "rock" && computerChoice === "scissors") ||
+        (humanChoice === "scissors" && computerChoice === "paper") ||
+        (humanChoice === "paper" && computerChoice === "rock")) {
+
+        humanScore+=1;
+    }
+    else {
+        computerScore+=1;
+
+
+    }
         
-
-
 }
+
+function playGame() {
+
+    let humanScore = 0;
+    let computerScore = 0;
+
+    for (i = 0; i < 5; i++) {
+        const callingHumanChoice = getHumanChoice();
+        const callingComputerChoice = getComputerChoice();
+        playRound(callingHumanChoice, callingComputerChoice) 
+        }
+
+
+    if (humanScore > computerScore) {
+        console.log("human wins the best of 5");
+    }
+    else if (humanScore < computerScore) {
+        console.log("computer wins the best of 5");
+    }
+    else {
+        console.log("it's a tie")
+    }
+}
+
+playGame()
