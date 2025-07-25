@@ -23,6 +23,10 @@ function getHumanChoice() {
     return choice
 }
 
+let humanScore = 0;
+let computerScore = 0;
+
+
 
 
 function playRound(humanChoice, computerChoice) {
@@ -35,9 +39,12 @@ function playRound(humanChoice, computerChoice) {
         (humanChoice === "paper" && computerChoice === "rock")) {
 
         humanScore+=1;
+        console.log(`you win ${humanChoice} beats ${computerChoice}`)
     }
     else {
         computerScore+=1;
+        console.log(`you lose ${computerChoice} beats ${humanChoice}`)
+        
 
 
     }
@@ -46,13 +53,15 @@ function playRound(humanChoice, computerChoice) {
 
 function playGame() {
 
-    let humanScore = 0;
-    let computerScore = 0;
+    humanScore = 0;
+    computerScore = 0;
 
     for (i = 0; i < 5; i++) {
         const callingHumanChoice = getHumanChoice();
-        const callingComputerChoice = getComputerChoice();
-        playRound(callingHumanChoice, callingComputerChoice) 
+        const callingComputerChoice = getComputerChoice("rock", "paper", "scissors");
+        playRound(callingHumanChoice, callingComputerChoice)
+        console.log(`humanscore: ${humanScore}        computerscore ${computerScore}`)
+
         }
 
 
